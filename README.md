@@ -1,16 +1,12 @@
 # dizzy
 
-A new Flutter project.
+An app to check if you are dizzy or not, and further telling if you should drive or not.
 
-## Getting Started
+## Techstack
+* framework: flutter
+* backend: firebase
 
-This project is a starting point for a Flutter application.
+## Procedure
+Simple, to check for dizzyness, just give the user a bunch of random directions to move their head into, check the latency, if it exceeds a certain limit, boom you have mr/mrs dizzy right there.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+We can also check for mobile wobbling to give the user a warning without even giving the test.
