@@ -1,0 +1,30 @@
+---
+name: dizzy
+description: A new Flutter project.
+version: 1.0.0+1
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+dependencies:
+  flutter:
+    sdk: flutter
+  camera: ^0.7.0
+  cupertino_icons: ^1.0.0
+  firebase_core: ^0.7.0
+  firebase_ml_vision: ^0.10.0
+  image: ^2.1.19
+  logger: ^0.9.4
+  permission_handler: ^5.0.1+1
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+flutter:
+  uses-material-design: true
+  fonts:
+    - family: metropolis
+      fonts:
+        - asset: assets/fonts/Metropolis-Bold.otf
+          weight: 700
+        - asset: assets/fonts/Metropolis-Regular.otf
+          weight: 400
+        - asset: assets/fonts/Metropolis-Light.otf
+          weight: 300
