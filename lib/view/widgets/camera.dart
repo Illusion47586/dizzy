@@ -27,7 +27,8 @@ class _CameraWidgetState extends State<CameraWidget> {
   ValueNotifier<int> counter = ValueNotifier<int>(0);
   GlobalKey _key = GlobalKey();
   Offset nosePosition;
-  List<Offset> data = [];
+  List<Map<String, dynamic>> data = [];
+  DateTime dateTime;
 
   @override
   void initState() {
@@ -46,6 +47,7 @@ class _CameraWidgetState extends State<CameraWidget> {
       if (!mounted) {
         return;
       }
+      dateTime = DateTime.now();
       foundText.value = "Not started yet";
       setState(() {});
     });
@@ -169,16 +171,28 @@ class _CameraWidgetState extends State<CameraWidget> {
                         final RenderBox renderBox =
                             _key.currentContext.findRenderObject();
                         Size size = renderBox.size;
-                        data.add(nosePosition);
+
+                        // todo: Go to where it is trackeing the nose, then wherever the nose is in suitable range around the dot, save the time difference.
+
+                        // ! trash
+                        // Duration duration = DateTime.now().difference(dateTime);
+                        // data.add({
+                        //   "nosePositionX": nosePosition.dx.toInt(),
+                        //   "nosePositionY": nosePosition.dy.toInt(),
+                        //   "dotPositionX": position.value.x.toInt(),
+                        //   "dotPositionY": position.value.y.toInt(),
+                        //   "timeDifference": duration.inMilliseconds,
+                        // });
                         position.value =
                             getBallPosition(size: size, ballSize: 30);
+                        dateTime = DateTime.now();
                         counter.value++;
                         if (counter.value > 15) {
                           controller.stopImageStream();
                           Logger().i("counter: " + counter.value.toString());
                           timer.cancel();
                           counter.value = 0;
-                          print(data);
+                          Logger().v(data);
                         }
                       } catch (e) {
                         Logger().e(e);
@@ -202,7 +216,7 @@ class _CameraWidgetState extends State<CameraWidget> {
                           controller.value.isStreamingImages.toString());
                     });
                     counter.value = 0;
-                    print(data);
+                    Logger().v(data);
                   } catch (e) {
                     Logger().e(e);
                   } finally {
