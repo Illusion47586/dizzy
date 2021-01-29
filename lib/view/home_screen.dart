@@ -1,31 +1,42 @@
+import 'dart:math';
+
+import 'package:boxicons_flutter/boxicons_flutter.dart';
 import 'package:camera/camera.dart';
-import 'package:dizzy/common/valueNotifiers.dart';
+import 'package:dizzy/common/value-notifiers.dart';
+import 'package:dizzy/view/widgets/arrow.dart';
 import 'package:flutter/material.dart';
+import 'package:render_metrics/render_metrics.dart';
 
 import 'widgets/camera.dart';
 
 class Home extends StatelessWidget {
   final List<CameraDescription> cameras;
   Home({this.cameras});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
         child: Container(
-          padding: EdgeInsets.all(40),
+          padding: EdgeInsets.fromLTRB(
+            40,
+            30,
+            40,
+            40,
+          ),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
+              MyAppBar(),
+              SizedBox(height: 20),
               Text(
-                "Follow the instructions, noob!",
+                "move your head as the arrow goes",
                 style: TextStyle(
                   fontSize: 20,
-                  fontWeight: FontWeight.w700,
+                  fontWeight: FontWeight.w500,
                 ),
               ),
-              SizedBox(height: 20),
               CameraWidget(cameras: cameras),
-              SizedBox(height: 20),
               ValueListenableBuilder(
                 valueListenable: foundText,
                 builder: (context, value, w) {
@@ -40,6 +51,47 @@ class Home extends StatelessWidget {
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class MyAppBar extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          RichText(
+            text: TextSpan(
+              text: "Dizzy\n",
+              style: TextStyle(
+                color: Colors.black,
+                fontFamily: "metropolis",
+                fontWeight: FontWeight.w400,
+                fontSize: 40,
+                height: 1.1,
+              ),
+              children: [
+                TextSpan(
+                  text: "Check",
+                  style: TextStyle(
+                    fontWeight: FontWeight.w700,
+                    fontSize: 45,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          IconButton(
+            icon: Icon(
+              Boxicons.bxShareAlt,
+              size: 30,
+            ),
+            onPressed: () {},
+          ),
+        ],
       ),
     );
   }

@@ -3,9 +3,9 @@ import 'dart:ui';
 import 'package:camera/camera.dart';
 import 'package:firebase_ml_vision/firebase_ml_vision.dart';
 
-import '../common/valueNotifiers.dart';
+import '../common/value-notifiers.dart';
 
-void foundImage(CameraImage image) async {
+Future<Offset> foundImage(CameraImage image) async {
   final FirebaseVisionImageMetadata metadata = FirebaseVisionImageMetadata(
     rawFormat: image.format.raw,
     size: Size(
@@ -40,10 +40,16 @@ void foundImage(CameraImage image) async {
 
   foundText.value = "${faces.length} people found.";
 
+  Offset nosePosition =
+      faces[0].getLandmark(FaceLandmarkType.noseBase).position;
+
   if (faces.length > 0)
     // foundText.value = faces[0].boundingBox.toString();
     // print(faces[0].headEulerAngleZ);
-    foundText.value = faces[0].smilingProbability.toString();
+    foundText.value =
+        "${nosePosition.dx} looking horizontal, ${nosePosition.dy} looking vertical.";
   else
     foundText.value = "No one is there.";
+
+  return nosePosition;
 }
