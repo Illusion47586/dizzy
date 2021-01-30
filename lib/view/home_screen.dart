@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:boxicons_flutter/boxicons_flutter.dart';
 import 'package:camera/camera.dart';
 import '../model/data.dart';
@@ -26,34 +27,34 @@ class Home extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               MyAppBar(),
-              RichText(
-                text: TextSpan(
-                  text: "Focus your nose on the ",
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontFamily: "metropolis",
-                    fontSize: 20,
-                    fontWeight: FontWeight.w700,
-                    height: 1.1,
-                  ),
-                  children: [
-                    TextSpan(
-                      text: "crosshair",
-                      style: TextStyle(
-                        color: Theme.of(context).accentColor,
-                      ),
-                    ),
-                    TextSpan(
-                      text: "\nand then follow the green dot.",
-                      style: TextStyle(
-                        fontWeight: FontWeight.w500,
-                        fontSize: 18,
-                      ),
-                    ),
-                  ],
+              SizedBox(height: 5),
+              AutoSizeText(
+                "Focus your nose on the crosshair",
+                style: TextStyle(
+                  color: Theme.of(context).accentColor,
+                  fontFamily: "metropolis",
+                  fontSize: 20,
+                  fontWeight: FontWeight.w700,
+                  height: 1.3,
                 ),
+                maxLines: 1,
+                textAlign: TextAlign.start,
               ),
+              AutoSizeText(
+                "and then follow the green dot with your head.",
+                style: TextStyle(
+                  color: Colors.black,
+                  fontFamily: "metropolis",
+                  fontSize: 20,
+                  fontWeight: FontWeight.w500,
+                  height: 1.1,
+                ),
+                textAlign: TextAlign.start,
+                maxLines: 1,
+              ),
+              SizedBox(height: 5),
               CameraWidget(cameras: cameras),
+              SizedBox(height: 5),
               ValueListenableBuilder(
                 valueListenable: foundText,
                 builder: (context, value, w) {
