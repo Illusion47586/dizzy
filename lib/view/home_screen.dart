@@ -107,7 +107,7 @@ class MyAppBar extends StatelessWidget {
               size: 30,
             ),
             onPressed: () {
-              Share.share('My latency is $avg.');
+              Share.share('My latency is $avg ms.');
             },
           ),
         ],

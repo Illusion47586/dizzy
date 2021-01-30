@@ -180,7 +180,7 @@ class _CameraWidgetState extends State<CameraWidget> {
                           avg = (avg / data.length).floorToDouble();
                           Logger().i(data);
                           Logger().i("Average: $avg");
-                          foundText.value = "Here is your latency: $avg";
+                          foundText.value = "Here is your latency: $avg ms.";
                           foundText.notifyListeners();
                           timer.cancel();
                           counter.value = 0;
