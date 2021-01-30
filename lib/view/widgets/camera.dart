@@ -29,7 +29,6 @@ class _CameraWidgetState extends State<CameraWidget> {
   @override
   void initState() {
     super.initState();
-    Permission.camera.request();
     for (var camera in widget.cameras) {
       Logger().v(camera.lensDirection.index);
     }
