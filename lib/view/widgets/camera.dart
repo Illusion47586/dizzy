@@ -1,11 +1,10 @@
 import 'dart:async';
-import 'dart:convert';
-import 'dart:math';
 import 'dart:ui';
 
 import 'package:camera/camera.dart';
-import 'package:dizzy/common/value-notifiers.dart';
+import 'package:dizzy/common/value_notifiers.dart';
 import 'package:dizzy/functions/ball_position.dart';
+import 'package:dizzy/model/data.dart';
 import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
@@ -24,11 +23,8 @@ class CameraWidget extends StatefulWidget {
 class _CameraWidgetState extends State<CameraWidget> {
   CameraController controller;
   Timer timer;
-  ValueNotifier<int> counter = ValueNotifier<int>(0);
   GlobalKey _key = GlobalKey();
   Offset nosePosition;
-  List<Map<String, dynamic>> data = [];
-  DateTime dateTime;
 
   @override
   void initState() {
@@ -47,7 +43,6 @@ class _CameraWidgetState extends State<CameraWidget> {
       if (!mounted) {
         return;
       }
-      dateTime = DateTime.now();
       foundText.value = "Not started yet";
       setState(() {});
     });
@@ -90,7 +85,7 @@ class _CameraWidgetState extends State<CameraWidget> {
                 DottedLine(
                   direction: Axis.horizontal,
                   lineLength: 100,
-                  lineThickness: 1.0,
+                  lineThickness: 2.0,
                   dashLength: 4.0,
                   dashColor: Theme.of(context).accentColor,
                   dashRadius: 10,
@@ -101,7 +96,7 @@ class _CameraWidgetState extends State<CameraWidget> {
                 DottedLine(
                   direction: Axis.vertical,
                   lineLength: 100,
-                  lineThickness: 1.0,
+                  lineThickness: 2.0,
                   dashLength: 4.0,
                   dashColor: Theme.of(context).accentColor,
                   dashRadius: 10,
@@ -185,14 +180,21 @@ class _CameraWidgetState extends State<CameraWidget> {
                         // });
                         position.value =
                             getBallPosition(size: size, ballSize: 30);
-                        dateTime = DateTime.now();
                         counter.value++;
                         if (counter.value > 15) {
                           controller.stopImageStream();
                           Logger().i("counter: " + counter.value.toString());
+                          double avg = 0;
+                          data.forEach((element) {
+                            if (element > 0) avg += element;
+                          });
+                          avg = (avg / data.length).floorToDouble();
+                          Logger().i(data);
+                          Logger().i("Average: $avg");
+                          foundText.value = "Here is your latency: $avg";
+                          foundText.notifyListeners();
                           timer.cancel();
                           counter.value = 0;
-                          Logger().v(data);
                         }
                       } catch (e) {
                         Logger().e(e);
@@ -216,7 +218,6 @@ class _CameraWidgetState extends State<CameraWidget> {
                           controller.value.isStreamingImages.toString());
                     });
                     counter.value = 0;
-                    Logger().v(data);
                   } catch (e) {
                     Logger().e(e);
                   } finally {

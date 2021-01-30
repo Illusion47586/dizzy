@@ -1,11 +1,15 @@
 import 'dart:math';
 import 'dart:ui';
 
-import 'package:dizzy/common/position.dart';
+import '../model/position.dart';
 
 Position getBallPosition({Size size, double ballSize}) {
   Random random = Random();
-  Position position = Position(a: ballSize / 2, b: ballSize / 2);
+  Position position = Position(
+    a: ballSize / 2,
+    b: ballSize / 2,
+    t: DateTime.now(),
+  );
   int randomX = random.nextInt(3);
   int randomY = random.nextInt(3);
 

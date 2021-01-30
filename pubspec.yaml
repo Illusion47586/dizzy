@@ -13,10 +13,8 @@ dependencies:
   dotted_line: ^2.0.2
   firebase_core: ^0.7.0
   firebase_ml_vision: ^0.10.0
-  image: ^2.1.19
   logger: ^0.9.4
   permission_handler: ^5.0.1+1
-  render_metrics: ^1.0.1
   step_progress_indicator: ^0.2.5+8
 dev_dependencies:
   flutter_test:

@@ -1,12 +1,8 @@
-import 'dart:math';
-
 import 'package:boxicons_flutter/boxicons_flutter.dart';
 import 'package:camera/camera.dart';
-import 'package:dizzy/common/value-notifiers.dart';
-import 'package:dizzy/view/widgets/arrow.dart';
 import 'package:flutter/material.dart';
-import 'package:render_metrics/render_metrics.dart';
 
+import '../common/value_notifiers.dart';
 import 'widgets/camera.dart';
 
 class Home extends StatelessWidget {
@@ -28,12 +24,31 @@ class Home extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               MyAppBar(),
-              SizedBox(height: 20),
-              Text(
-                "move your head as the arrow goes",
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w500,
+              RichText(
+                text: TextSpan(
+                  text: "Focus your nose on the ",
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontFamily: "metropolis",
+                    fontSize: 20,
+                    fontWeight: FontWeight.w700,
+                    height: 1.1,
+                  ),
+                  children: [
+                    TextSpan(
+                      text: "crosshair",
+                      style: TextStyle(
+                        color: Theme.of(context).accentColor,
+                      ),
+                    ),
+                    TextSpan(
+                      text: "\nand then follow the green dot.",
+                      style: TextStyle(
+                        fontWeight: FontWeight.w500,
+                        fontSize: 18,
+                      ),
+                    ),
+                  ],
                 ),
               ),
               CameraWidget(cameras: cameras),
