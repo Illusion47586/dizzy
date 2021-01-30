@@ -5,7 +5,6 @@ import 'package:camera/camera.dart';
 import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
-import 'package:permission_handler/permission_handler.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
 
 import '../../common/value_notifiers.dart';
@@ -78,9 +77,11 @@ class _CameraWidgetState extends State<CameraWidget> {
               alignment: Alignment.center,
               key: _key,
               children: [
-                CameraPreview(
-                  controller,
-                ),
+                controller.value.hasError == false
+                    ? CameraPreview(
+                        controller,
+                      )
+                    : Text(controller.value.errorDescription.toString()),
                 DottedLine(
                   direction: Axis.horizontal,
                   lineLength: 100,
