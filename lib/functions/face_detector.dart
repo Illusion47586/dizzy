@@ -50,10 +50,8 @@ Future<Offset> foundImage(CameraImage image) async {
       Duration duration = position.value.time.difference(DateTime.now());
       if ((counter.value - 1) >= 0 && data[counter.value - 1] == 0)
         data[counter.value - 1] = duration.inMilliseconds.abs().floorToDouble();
-      if (counter.value == 16)
-        foundText.value = "Here is your latency: $avg ms.";
+      foundText.value = "Focus on the green dot.";
     }
-    foundText.value = "Focus on the green dot.";
     return nosePosition;
   } else
     foundText.value = "No one is there.";
