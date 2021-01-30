@@ -45,12 +45,13 @@ Future<Offset> foundImage(CameraImage image) async {
     Offset nosePosition =
         faces[0].getLandmark(FaceLandmarkType.noseBase).position;
     // The nose is in the viscinity of the dot and we record the time
-    if (((nosePosition.dx - position.value.x).abs() <= 300) &&
-        ((nosePosition.dy - position.value.y).abs() <= 300)) {
+    if (((nosePosition.dx - position.value.x).abs() <= 250) &&
+        ((nosePosition.dy - position.value.y).abs() <= 250)) {
       Duration duration = position.value.time.difference(DateTime.now());
       if ((counter.value - 1) >= 0 && data[counter.value - 1] == 0)
         data[counter.value - 1] = duration.inMilliseconds.abs().floorToDouble();
       foundText.value = "Focus on the green dot.";
+      if (counter.value > 15) foundText.value = "Your latency is $avg ms.";
     }
     return nosePosition;
   } else
