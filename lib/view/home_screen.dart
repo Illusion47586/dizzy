@@ -1,6 +1,8 @@
 import 'package:boxicons_flutter/boxicons_flutter.dart';
 import 'package:camera/camera.dart';
+import '../model/data.dart';
 import 'package:flutter/material.dart';
+import 'package:share/share.dart';
 
 import '../common/value_notifiers.dart';
 import 'widgets/camera.dart';
@@ -104,7 +106,9 @@ class MyAppBar extends StatelessWidget {
               Boxicons.bxShareAlt,
               size: 30,
             ),
-            onPressed: () {},
+            onPressed: () {
+              Share.share('My latency is $avg.');
+            },
           ),
         ],
       ),

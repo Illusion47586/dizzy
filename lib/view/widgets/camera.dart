@@ -2,16 +2,16 @@ import 'dart:async';
 import 'dart:ui';
 
 import 'package:camera/camera.dart';
-import 'package:dizzy/common/value_notifiers.dart';
-import 'package:dizzy/functions/ball_position.dart';
-import 'package:dizzy/model/data.dart';
 import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
 
+import '../../common/value_notifiers.dart';
+import '../../functions/ball_position.dart';
 import '../../functions/face_detector.dart';
+import '../../model/data.dart';
 
 class CameraWidget extends StatefulWidget {
   final List<CameraDescription> cameras;
@@ -153,6 +153,8 @@ class _CameraWidgetState extends State<CameraWidget> {
               MaterialButton(
                 onPressed: () {
                   try {
+                    data = List<double>.generate(16, (index) => 0);
+                    avg = 0;
                     Logger().v(controller.value.isStreamingImages);
                     controller.startImageStream((image) async {
                       nosePosition = await foundImage(image);
@@ -166,25 +168,12 @@ class _CameraWidgetState extends State<CameraWidget> {
                         final RenderBox renderBox =
                             _key.currentContext.findRenderObject();
                         Size size = renderBox.size;
-
-                        // todo: Go to where it is trackeing the nose, then wherever the nose is in suitable range around the dot, save the time difference.
-
-                        // ! trash
-                        // Duration duration = DateTime.now().difference(dateTime);
-                        // data.add({
-                        //   "nosePositionX": nosePosition.dx.toInt(),
-                        //   "nosePositionY": nosePosition.dy.toInt(),
-                        //   "dotPositionX": position.value.x.toInt(),
-                        //   "dotPositionY": position.value.y.toInt(),
-                        //   "timeDifference": duration.inMilliseconds,
-                        // });
                         position.value =
                             getBallPosition(size: size, ballSize: 30);
                         counter.value++;
                         if (counter.value > 15) {
                           controller.stopImageStream();
                           Logger().i("counter: " + counter.value.toString());
-                          double avg = 0;
                           data.forEach((element) {
                             if (element > 0) avg += element;
                           });

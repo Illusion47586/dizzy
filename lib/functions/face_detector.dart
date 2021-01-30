@@ -1,10 +1,10 @@
 import 'dart:ui';
 
 import 'package:camera/camera.dart';
-import 'package:dizzy/model/data.dart';
 import 'package:firebase_ml_vision/firebase_ml_vision.dart';
 
 import '../common/value_notifiers.dart';
+import '../model/data.dart';
 
 Future<Offset> foundImage(CameraImage image) async {
   final FirebaseVisionImageMetadata metadata = FirebaseVisionImageMetadata(
