@@ -1,6 +1,10 @@
 ## Contributing
 Contributions are welcome! Whether you want to contribute to the code or design or even documentation, it would be great. Take care of the formatting and stuff, you just need to install the extensoins for VS Code and use them, that's it.
 
+Or you can also just help in collecting data and helping me find the suitable not-dizzy range!
+
+Thanks in advance.
+
 ## Formatting
 Used VS code with following extensions:
 1. [Awesome Flutter Snippets](https://marketplace.visualstudio.com/items?itemName=Nash.awesome-flutter-snippets)
