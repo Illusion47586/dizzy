@@ -30,7 +30,7 @@
 .pub-cache/
 .pub/
 /build/
-servies.tar
+/services.tar
 
 # Web related
 lib/generated_plugin_registrant.dart
