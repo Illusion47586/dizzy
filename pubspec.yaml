@@ -1,6 +1,6 @@
 ---
 name: dizzy
-description: checks for dizzyness.
+description: checks for dizzyness by tracking your face.
 version: 1.0.0+1
 environment:
   sdk: ">=2.7.0 <3.0.0"
