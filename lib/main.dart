@@ -13,7 +13,7 @@ Future<void> main() async {
   cameras = await availableCameras();
   SystemChrome.setSystemUIOverlayStyle(
     SystemUiOverlayStyle(
-      statusBarColor: Color(0xffF8F9FE),
+      statusBarColor: Colors.white,
       statusBarIconBrightness: Brightness.light,
     ),
   );
@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primaryColor: Colors.black,
         accentColor: Color(0xffF92B5C),
-        backgroundColor: Color(0xffF8F9FE),
+        backgroundColor: Colors.white,
         visualDensity: VisualDensity.adaptivePlatformDensity,
         fontFamily: 'metropolis',
         brightness: Brightness.light,
