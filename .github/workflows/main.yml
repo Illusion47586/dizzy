@@ -49,10 +49,6 @@ jobs:
       # Build apk.
       - run: flutter build apk
 
-      # check if path exists
-      - run: "mkdir --parents build/app/outputs/apk/release"
-      - run: "env | grep GITHUB_ | sort > build/app/outputs/apk/release/app-release.apk"
-
       # Upload generated apk to the artifacts.
       - uses: actions/upload-artifact@v1
         with:
