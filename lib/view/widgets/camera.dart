@@ -177,10 +177,14 @@ class _CameraWidgetState extends State<CameraWidget> {
                           if (counter.value > 15) {
                             controller.stopImageStream();
                             Logger().i("counter: " + counter.value.toString());
+                            int len = 0;
                             data.forEach((element) {
-                              if (element > 0) avg += element;
+                              if (element > 0) {
+                                avg += element;
+                                len++;
+                              }
                             });
-                            avg = (avg / data.length).floorToDouble();
+                            avg = (avg / len).floorToDouble();
                             Logger().i(data);
                             Logger().i("Average: $avg");
                             timer.cancel();
