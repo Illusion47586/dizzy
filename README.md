@@ -29,14 +29,3 @@ Also, one more thing, tracking the `eyes` (more specifically, `iris`), would be 
 This can help a lot in preventing accidents due to drunken driving. Moreover since `EVs` are going to takeover the market, vehicles can connect to the `mobile device` and help the user check if he/she is in a stable condition to drive or not. This is in no way or sense a **soberiety or drunk test**, maybe in the future depending on the accuracy of the model used (instead of firebase).
 
 *Interested in implementing this somewhere? Let's chat! [`here`](https://dhruv-tiwari.netlify.app/)*
-
-## Formatting
-Used VS code with following extensions:
-1. [Awesome Flutter Snippets](https://marketplace.visualstudio.com/items?itemName=Nash.awesome-flutter-snippets)
-2. [Better Comments](https://marketplace.visualstudio.com/items?itemName=aaron-bond.better-comments)
-3. [Dart](https://marketplace.visualstudio.com/items?itemName=Dart-Code.dart-code)
-4. [dart-import](https://marketplace.visualstudio.com/items?itemName=luanpotter.dart-import) : for managing imports
-5. [Flutter](https://marketplace.visualstudio.com/items?itemName=Dart-Code.flutter)
-6. [Pubspec Assist](https://marketplace.visualstudio.com/items?itemName=jeroen-meijer.pubspec-assist)
-
-All formatting done using normal [Dart](https://marketplace.visualstudio.com/items?itemName=Dart-Code.dart-code) formatter and imports were formatted using [dart-import](https://marketplace.visualstudio.com/items?itemName=luanpotter.dart-import).
