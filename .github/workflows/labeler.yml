@@ -1,0 +1,18 @@
+documentation:
+- *.md
+- **/*.md
+
+code:
+- lib/**
+
+android:
+- android/**
+
+iOS:
+- ios/**
+
+test:
+- test/**
+
+dependencies:
+- pubspec.yaml
