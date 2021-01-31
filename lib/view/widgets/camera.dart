@@ -212,6 +212,16 @@ class _CameraWidgetState extends State<CameraWidget> {
                         Logger().v("now: " +
                             controller.value.isStreamingImages.toString());
                       });
+                      int len = 0;
+                      data.forEach((element) {
+                        if (element > 0) {
+                          avg += element;
+                          len++;
+                        }
+                      });
+                      avg = (avg / len).floorToDouble();
+                      Logger().i(data);
+                      Logger().i("Average: $avg");
                       counter.value = 0;
                     } catch (e) {
                       Logger().e(e);
