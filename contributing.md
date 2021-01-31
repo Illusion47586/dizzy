@@ -20,3 +20,7 @@ Used VS code with following extensions:
 6. [Pubspec Assist](https://marketplace.visualstudio.com/items?itemName=jeroen-meijer.pubspec-assist)
 
 All formatting done using normal [Dart](https://marketplace.visualstudio.com/items?itemName=Dart-Code.dart-code) formatter and imports were formatted using [dart-import](https://marketplace.visualstudio.com/items?itemName=luanpotter.dart-import).
+
+## Running
+
+Please download your own google-services from firebase using package name `com.example.dizzy`.
