@@ -30,6 +30,7 @@
 .pub-cache/
 .pub/
 /build/
+/android/app/google-services.json
 /services.tar
 
 # Web related
