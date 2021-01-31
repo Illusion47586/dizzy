@@ -5,6 +5,8 @@ Or you can also just help in collecting data and helping me find the suitable no
 
 Thanks in advance.
 
+![issues](https://img.shields.io/github/issues-raw/illusion47586/dizzy) ![pr](https://img.shields.io/github/issues-pr-raw/illusion47586/dizzy)
+
 ## Formatting
 Used VS code with following extensions:
 1. [Awesome Flutter Snippets](https://marketplace.visualstudio.com/items?itemName=Nash.awesome-flutter-snippets)
