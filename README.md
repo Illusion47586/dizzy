@@ -3,6 +3,7 @@
 An app to check if you are dizzy or not, and further telling if you should drive or not.
 
 ![Flutter CI](https://github.com/Illusion47586/dizzy/workflows/Flutter%20CI/badge.svg)
+![Supports](https://img.shields.io/badge/Supports-Android-green)
 
 ## Techstack
 * framework: [`flutter`](https://flutter.dev/)
