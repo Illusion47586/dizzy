@@ -9,6 +9,7 @@ on:
     paths-ignore: 
     - 'build/**'
     - '*.md'
+    - '.github/workflows/**'
     
 # on: push    # Default will running for every branch.
     
