@@ -1,3 +1,15 @@
 documentation:
 - *.md
 - **/*.md
+
+android:
+- android/**
+
+iOS:
+- ios/**
+
+build:
+- build/**
+
+code:
+- lib/**
