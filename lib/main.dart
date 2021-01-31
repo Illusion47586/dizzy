@@ -13,7 +13,7 @@ Future<void> main() async {
   cameras = await availableCameras();
   SystemChrome.setSystemUIOverlayStyle(
     SystemUiOverlayStyle(
-      statusBarColor: Colors.transparent,
+      statusBarColor: Color(0xffF8F9FE),
       statusBarIconBrightness: Brightness.light,
     ),
   );
