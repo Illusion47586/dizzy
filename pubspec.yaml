@@ -1,6 +1,6 @@
 ---
 name: dizzy
-description: A new Flutter project.
+description: checks for dizzyness.
 version: 1.0.0+1
 environment:
   sdk: ">=2.7.0 <3.0.0"
