@@ -37,7 +37,6 @@ Future<Offset> foundImage(CameraImage image) async {
   );
 
   List<Face> faces = await faceDetector.processImage(visionImage);
-  faceList.value = faces;
 
   foundText.value = "${faces.length} people found.";
 
