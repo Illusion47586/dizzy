@@ -41,8 +41,8 @@ jobs:
         run: |
           mkdir $HOME/secrets
           gpg --quiet --batch --yes --decrypt --passphrase="$SECRET_PASSPHRASE" \
-          --output $HOME/secrets/secrets.tar secrets.tar.gpg
-          tar xvf $HOME/secrets/secrets.tar
+          --output $HOME/secrets/services.tar services.tar.gpg
+          tar xvf $HOME/secrets/services.tar
         env:
           SECRET_PASSPHRASE: ${{ secrets.SECRET_PASSPHRASE }}
 
