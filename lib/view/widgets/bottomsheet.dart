@@ -8,6 +8,8 @@ import 'package:share/share.dart';
 // Project imports:
 import '../../model/data.dart';
 
+const fitLatency = 70;
+
 class ResultSheet extends StatelessWidget {
   const ResultSheet({
     Key key,
@@ -24,7 +26,7 @@ class ResultSheet extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
-              "${avg < 0 ? "Failed test, face went out of viewport one or more than one times." : "Here is your last latency: $avg ms."}\n\n${avg > 50 || avg < 0 ? "Sorry not fit to drive" : "Engine on! You are fit to drive."}",
+              "${avg < 0 ? "Failed test, face went out of viewport one or more than one times." : "Here is your last latency: $avg ms."}\n\n${avg > fitLatency || avg < 0 ? "Sorry not fit to drive" : "Engine on! You are fit to drive."}",
               style: TextStyle(
                 fontSize: 22,
                 fontWeight: FontWeight.w500,
