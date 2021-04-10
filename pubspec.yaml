@@ -14,12 +14,15 @@ dependencies:
   dotted_line: ^2.0.2
   firebase_core: ^0.7.0
   firebase_ml_vision: ^0.10.0
+  flutter_screenutil: ^4.0.4
+  flutter_statusbar_manager: ^2.0.0
   logger: ^0.9.4
   share: ^0.6.5+4
   step_progress_indicator: ^0.2.5+8
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  import_sorter: ^4.4.2
 flutter:
   uses-material-design: true
   fonts:

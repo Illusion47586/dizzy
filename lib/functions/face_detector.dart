@@ -1,12 +1,15 @@
+// Dart imports:
 import 'dart:ui';
 
+// Package imports:
 import 'package:camera/camera.dart';
 import 'package:firebase_ml_vision/firebase_ml_vision.dart';
 
+// Project imports:
 import '../common/value_notifiers.dart';
 import '../model/data.dart';
 
-Future<Offset> foundImage(CameraImage image) async {
+Future<dynamic> foundImage(CameraImage image) async {
   final FirebaseVisionImageMetadata metadata = FirebaseVisionImageMetadata(
     rawFormat: image.format.raw,
     size: Size(
@@ -43,9 +46,12 @@ Future<Offset> foundImage(CameraImage image) async {
   if (faces.length > 0) {
     Offset nosePosition =
         faces[0].getLandmark(FaceLandmarkType.noseBase).position;
-    // The nose is in the viscinity of the dot and we record the time
-    if (((nosePosition.dx - position.value.x).abs() <= 250) &&
-        ((nosePosition.dy - position.value.y).abs() <= 250)) {
+
+    /// The [nose] is in the `viscinity of the dot` and we record the time
+
+    int noticeRadius = 200;
+    if (((nosePosition.dx - position.value.x).abs() <= noticeRadius) &&
+        ((nosePosition.dy - position.value.y).abs() <= noticeRadius)) {
       Duration duration = position.value.time.difference(DateTime.now());
       if ((counter.value - 1) >= 0 && data[counter.value - 1] == 0)
         data[counter.value - 1] = duration.inMilliseconds.abs().floorToDouble();
@@ -53,6 +59,9 @@ Future<Offset> foundImage(CameraImage image) async {
       if (counter.value > 15) foundText.value = "Your latency is $avg ms.";
     }
     return nosePosition;
-  } else
+  } else {
     foundText.value = "No one is there.";
+    if ((counter.value - 1) >= 0 && data[counter.value - 1] == 0)
+      data[counter.value - 1] = -1;
+  }
 }
