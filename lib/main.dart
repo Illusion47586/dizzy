@@ -9,6 +9,7 @@ import 'package:flutter/services.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_statusbar_manager/flutter_statusbar_manager.dart';
+import 'package:logger/logger.dart';
 
 // Project imports:
 import 'view/home_screen.dart';
@@ -26,15 +27,19 @@ List<CameraDescription> cameras;
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   cameras = await availableCameras();
-  await FlutterStatusbarManager.setStyle(StatusBarStyle.DARK_CONTENT);
-  await FlutterStatusbarManager.setColor(
-    Colors.transparent,
-    animated: true,
-  );
-  await FlutterStatusbarManager.setNavigationBarColor(
-    Colors.transparent,
-    animated: true,
-  );
+  try {
+    await FlutterStatusbarManager.setStyle(StatusBarStyle.DARK_CONTENT);
+    await FlutterStatusbarManager.setColor(
+      Colors.transparent,
+      animated: true,
+    );
+    await FlutterStatusbarManager.setNavigationBarColor(
+      Colors.transparent,
+      animated: true,
+    );
+  } catch (e) {
+    Logger().e(e);
+  }
   runApp(MyApp());
 }
 
