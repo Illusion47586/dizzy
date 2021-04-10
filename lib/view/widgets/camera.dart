@@ -55,7 +55,10 @@ class _CameraWidgetState extends State<CameraWidget> {
             Logger().i("counter: " + counter.value.toString());
             int len = 0;
 
+            ///
             /// [zeroCount] counts times when user `never` reaches the [dot]
+            ///
+
             int zeroCount = 0;
             for (var i = 1; i < data.length; i++) {
               double element = data[i];
